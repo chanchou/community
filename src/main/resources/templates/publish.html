@@ -1,0 +1,381 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>发布 - 码问</title>
+        <head th:include="import::head"></head>
+        <head th:include="import::markdown"></head>
+</head>
+<body>
+
+<div th:include="navigation::nav">
+</div>
+<div class="container-fluid main">
+    <div class="row">
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+            <h2><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 发起</h2>
+            <hr>
+            <form action="/publish" method="post">
+                <input type="hidden" name="id" value="" id="${id}}">
+                <div class="form-group">
+                    <label for="title">问题标题（简单扼要）:</label>
+                    <input type="text" class="form-control" th:value="${title}" id="title" name="title"
+                           placeholder="问题标题……"
+                           autocomplete="off">
+                </div>
+                <div class="form-group" id="question-editor">
+                    <label for="description">问题补充 (必填，请参照右侧提示):</label>
+                    <textarea name="description" id="description" style="display:none;" th:text="${description}"
+                              class="form-control"
+                              cols="30"
+                              rows="10"></textarea>
+                </div>
+                <script type="text/javascript">
+                    $(function () {
+                        var editor = editormd("question-editor", {
+                            width: "100%",
+                            height: 350,
+                            path: "/js/lib/",
+                            delay: 0,
+                            watch: false,
+                            placeholder: "请输入问题描述",
+                            imageUpload: true,
+                            imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                            imageUploadURL: "/file/upload",
+                        });
+                    });
+                </script>
+                <div class="form-group">
+                    <label for="tag">添加标签:</label>
+                    <input type="text" class="form-control" value="" id="tag" name="tag"
+                           autocomplete="off"
+                           placeholder="输入标签，以，号分隔"
+                           onclick="showSelectTag()">
+                    <div id="select-tag" class="publish-tag-tab">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#开发语言" aria-controls="home" role="tab"
+                                   data-toggle="tab">开发语言</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#平台框架" aria-controls="home" role="tab"
+                                   data-toggle="tab">平台框架</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#服务器" aria-controls="home" role="tab"
+                                   data-toggle="tab">服务器</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#数据库" aria-controls="home" role="tab"
+                                   data-toggle="tab">数据库</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#开发工具" aria-controls="home" role="tab"
+                                   data-toggle="tab">开发工具</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#其他" aria-controls="home" role="tab"
+                                   data-toggle="tab">其他</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div role="tabpanel" id="开发语言"
+                                 class="active tab-pane">
+                                <span>
+                                    <span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="javascript"> javascript</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="php"> php</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="css"> css</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="html"> html</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="html5"> html5</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="java"> java</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="node.js"> node.js</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="python"> python</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="c++"> c++</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="c"> c</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="golang"> golang</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="objective-c"> objective-c</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="typescript"> typescript</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="shell"> shell</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="swift"> swift</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="c#"> c#</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="sass"> sass</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="ruby"> ruby</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="bash"> bash</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="less"> less</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="asp.net"> asp.net</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="lua"> lua</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="scala"> scala</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="coffeescript"> coffeescript</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="actionscript"> actionscript</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="rust"> rust</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="erlang"> erlang</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="perl"> perl</span>
+                                </span>
+                                </span>
+                            </div>
+                            <div role="tabpanel" id="平台框架"
+                                 class="tab-pane">
+                                <span>
+                                    <span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="laravel"> laravel</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="spring"> spring</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="express"> express</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="django"> django</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="flask"> flask</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="yii"> yii</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="ruby-on-rails"> ruby-on-rails</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="tornado"> tornado</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="koa"> koa</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="struts"> struts</span>
+                                </span>
+                                </span>
+                            </div>
+                            <div role="tabpanel" id="服务器"
+                                 class="tab-pane">
+                                <span>
+                                    <span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="linux"> linux</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="nginx"> nginx</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="docker"> docker</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="apache"> apache</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="ubuntu"> ubuntu</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="centos"> centos</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="缓存 tomcat"> 缓存 tomcat</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="负载均衡"> 负载均衡</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="unix"> unix</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="hadoop"> hadoop</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="windows-server"> windows-server</span>
+                                </span>
+                                </span>
+                            </div>
+                            <div role="tabpanel" id="数据库"
+                                 class="tab-pane">
+                                <span>
+                                    <span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="mysql"> mysql</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="redis"> redis</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="mongodb"> mongodb</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="sql"> sql</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="oracle"> oracle</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="nosql memcached"> nosql memcached</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="sqlserver"> sqlserver</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="postgresql"> postgresql</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="sqlite"> sqlite</span>
+                                </span>
+                                </span>
+                            </div>
+                            <div role="tabpanel" id="开发工具"
+                                 class="tab-pane">
+                                <span>
+                                    <span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="git"> git</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="github"> github</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="visual-studio-code"> visual-studio-code</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="vim"> vim</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="sublime-text"> sublime-text</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="xcode intellij-idea"> xcode intellij-idea</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="eclipse"> eclipse</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="maven"> maven</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="ide"> ide</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="svn"> svn</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="visual-studio"> visual-studio</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="atom emacs"> atom emacs</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="textmate"> textmate</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="hg"> hg</span>
+                                </span>
+                                </span>
+                            </div>
+                            <div role="tabpanel" id="其他"
+                                 class="tab-pane">
+                                <span>
+                                    <span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="广告"> 广告</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="求职"> 求职</span>
+                                </span><span>
+                                    <span class="community-tag" onclick="selectTag(this)"
+                                          data-tag="招聘"> 招聘</span>
+                                </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container-fluid main ">
+                    <div class="row">
+                        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12" th:if="${error}!=null">
+                            <div class="alert alert-danger col-lg-12 col-md-12 col-sm-12 col-xs-12" th:text="${error}"></div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                            <button type="submit" class="btn btn-success btn-publish ">
+                                发布
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+            <h3>问题发起指南</h3>
+            • 问题标题: 请用精简的语言描述您发布的问题，不超过25字 <br>
+            • 问题补充: 详细补充您的问题内容，并确保问题描述清晰直观, 并提供一些相关的资料<br>
+            • 选择标签: 选择一个或者多个合适的标签，用逗号隔开，每个标签不超过10个字<br>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="footer">
+        <div>Copyright © 2019 码问 · <a href="http://www.beian.miit.gov.cn" target="_blank">浙ICP备18020649号-2</a> · 服务器赞助:
+            <a
+                    href="https://passport.ucloud.cn/?invitation_code=nmtbj0lvttvx&ytag=re01B1"
+                    target="_blank">UCloud</a> · All Rights Reserved
+            Powered
+        </div>
+    </div>
+</div>
+</body>
+</html>

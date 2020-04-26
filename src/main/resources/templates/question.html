@@ -1,0 +1,271 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head th:include="import::head"></head>
+    <head th:include="import::markdown"></head>
+    <title></title>
+</head>
+<body>
+<div>
+<div th:include="navigation::nav"></div>
+</div>
+<div class="container-fluid main profile">
+    <div class="row">
+
+        <!--左边主要内容-->
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+            <!--正文-->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h4 class="question-title"><span th:text="${question.title}">请问标签c++报错的问题是咋解决的啊</span></h4>
+                <span class="text-desc">
+                作者：<span th:text="${question.user.name}">大树（树洞笔记）</span> |
+                发布时间：<span th:text="${#dates.format(question.gmtCreate,'yyyy-MM-dd HH:MM')}">2020-04-20 11:58</span> |
+                阅读数： <span th:text="${question.viewCount}">44</span>
+            </span>
+
+                <!--内容-->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="question-view">
+                    <textarea style="display:none;" th:text="${question.description}">视频里面好像没说</textarea>
+                </div>
+                <script type="text/javascript">
+                    $(function () {
+                        editormd.markdownToHTML("question-view", {});
+                    });
+                </script>
+
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="width: 100%;">
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- 页尾广告 -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-9804684553882114"
+                         data-ad-slot="4772323686"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+
+                <!--标签-->
+                <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <span class="question-tag">
+                        <a href="/?page=1&amp;tag=c%2B%2B"
+                           class="community-tag">c++</a>
+                    </span>
+                </div>
+
+                <!--编辑-->
+                <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                </div>
+                <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            </div>
+
+            <!--回复-->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h4>
+                    <span>1</span> 个回复
+                </h4>
+                <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12 comment-sp">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 comments">
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="#">
+                                <img class="media-object img-rounded"
+                                     src="https://avatars3.githubusercontent.com/u/61218743?v=4">
+                            </a>
+                        </div>
+                        <div class="media-body" id="comment-body-2880">
+                            <h5 class="media-heading">
+                                <span></span>
+                            </h5>
+                            <div>test</div>
+                            <div class="menu">
+                                <span class="glyphicon glyphicon-thumbs-up icon"></span>
+                                <span data-id="2880"
+                                      onclick="collapseComments(this)" class="comment-icon">
+                                    <span class="glyphicon glyphicon-comment"></span>
+                                    <span>0</span>
+                                </span>
+                                <span class="pull-right">2020-04-21</span>
+                            </div>
+                            <!--二级评论-->
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 collapse sub-comments"
+                                 id="comment-2880">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <input type="text" class="form-control" placeholder="评论一下……"
+                                           id="input-2880">
+                                    <button type="button" class="btn btn-success pull-right" onclick="comment(this)"
+                                            data-id="2880">评论
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--回复输入框-->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h4>
+                    提交回复
+                </h4>
+                <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12 comment-sp">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="comment_section">
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="#">
+                                <img class="media-object img-rounded"
+                                     src="https://avatars0.githubusercontent.com/u/9632428?v=4">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h5 class="media-heading">
+                                <span></span>
+                            </h5>
+                        </div>
+                    </div>
+                    <input type="hidden" id="question_id" value="1040">
+                    <textarea class="form-control comment" rows="6" id="comment_content"></textarea>
+                    <button type="button" class="btn btn-success btn-comment" onclick="post()">回复</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!--右边信息块-->
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h4>发起人</h4>
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object img-rounded"
+                                 src="https://avatars2.githubusercontent.com/u/60208355?v=4">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h5 class="media-heading">
+                            <span th:text="${question.user.name}">大树（树洞笔记）</span>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <!--码问官方公众号-->
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 side">
+                        <h4>官方微信</h4>
+                        <img class="img-thumbnail question-wechat" src="/images/official-account.png">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 side">
+                        <a href="http://www.mawen.co/question/261" onclick="clickSide(&quot;UCloud&quot;)"
+                           target="_blank">
+                            <img class="img-thumbnail question-wechat"
+                                 src="http://mawen-cdn.cn-bj.ufileos.com/uhost.png">
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <!--相关问题-->
+            <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h4>相关问题</h4>
+                <ul class="question-related">
+                    <li>
+                        <a href="/question/1045">question</a>
+                    </li>
+                    <li>
+                        <a href="/question/1044">333</a>
+                    </li>
+                    <li>
+                        <a href="/question/1043">哈哈</a>
+                    </li>
+                    <li>
+                        <a href="/question/1041">测试</a>
+                    </li>
+                    <li>
+                        <a href="/question/1034">互访，互访</a>
+                    </li>
+                    <li>
+                        <a href="/question/1032">说说我尝试做的第一个springboot项目——好玩社区（持续更新中）</a>
+                    </li>
+                    <li>
+                        <a href="/question/1029">请问第七讲为啥我的结果是这样呢？</a>
+                    </li>
+                    <li>
+                        <a href="/question/1024">测试</a>
+                    </li>
+                    <li>
+                        <a href="/question/1022">测试功能</a>
+                    </li>
+                    <li>
+                        <a href="/question/1016">是你说想买香港主机来着？</a>
+                    </li>
+                    <li>
+                        <a href="/question/1012">FSDFSD</a>
+                    </li>
+                    <li>
+                        <a href="/question/1011">测试</a>
+                    </li>
+                    <li>
+                        <a href="/question/1007">aaaaaaaaaaa</a>
+                    </li>
+                    <li>
+                        <a href="/question/999">,,,</a>
+                    </li>
+                    <li>
+                        <a href="/question/998">而非</a>
+                    </li>
+                    <li>
+                        <a href="/question/995">1111</a>
+                    </li>
+                    <li>
+                        <a href="/question/989">测试</a>
+                    </li>
+                    <li>
+                        <a href="/question/986">hhh</a>
+                    </li>
+                    <li>
+                        <a href="/question/985">分</a>
+                    </li>
+                    <li>
+                        <a href="/question/983">交个作业。集成redis,spring security,fastdfs,实现点赞功能，登录</a>
+                    </li>
+                </ul>
+            </div>
+            <!--友情链接-->
+            <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h4>友情链接</h4>
+                <ul class="question-related">
+                    <li>
+                        <a href="https://openwrite.cn?utm_source=mawen" target="_blank">OpenWrite 一文多发工具</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="footer">
+        <div>Copyright © 2019 码问 · <a href="http://www.beian.miit.gov.cn" target="_blank">浙ICP备18020649号-2</a> · 服务器赞助:
+            <a
+                    href="https://passport.ucloud.cn/?invitation_code=nmtbj0lvttvx&ytag=re01B1"
+                    target="_blank">UCloud</a> · All Rights Reserved
+            Powered
+        </div>
+    </div>
+</div>
+</body>
+</html>
