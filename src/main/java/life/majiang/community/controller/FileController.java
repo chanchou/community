@@ -2,7 +2,6 @@ package life.majiang.community.controller;
 
 import life.majiang.community.dto.FileUploadDTO;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,8 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+
 
 @Controller
 @Slf4j
@@ -22,9 +20,9 @@ public class FileController {
     @ResponseBody
     public FileUploadDTO upload(@RequestParam(value = "editormd-image-file", required = true) MultipartFile file) {
         FileUploadDTO fileUploadDTO = new FileUploadDTO();
-
+        String destFileName= System.currentTimeMillis()+file.getOriginalFilename();
         try {
-            String destFileName= System.currentTimeMillis()+file.getOriginalFilename();
+
             File path = new File(ResourceUtils.getURL("classpath").getPath());
             File uploadFilePath = new File(path.getAbsolutePath(), "static"+File.separator+"upload"+File.separator+"images");
             if (!uploadFilePath.exists()) {
@@ -42,10 +40,11 @@ public class FileController {
             fileUploadDTO.setSuccess(1);
             fileUploadDTO.setUrl("http://localhost:8887"+File.separator+"upload"+File.separator+"images"+File.separator+destFileName);
 
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+            log.info("{} 图片上传失败",destFileName);
+            fileUploadDTO.setMessage("上传失败");
+            fileUploadDTO.setSuccess(0);
         }
         return fileUploadDTO;
     }

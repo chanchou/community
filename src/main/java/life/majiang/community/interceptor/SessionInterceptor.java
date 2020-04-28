@@ -52,6 +52,9 @@ public class SessionInterceptor implements HandlerInterceptor {
 
             }
         }
+
+        //查找导航条菜单，注入model
+
         log.info("拦截器 SessionTntercept 已经执行");
         return true;
     }
