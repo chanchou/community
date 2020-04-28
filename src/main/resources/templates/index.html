@@ -5,6 +5,7 @@
     <head th:include="import::head">
 
         <head>
+            <link href="/css/dashboard.css" rel="stylesheet">
             <link rel="stylesheet" href="/css/editormd.min.css">
             <link rel="stylesheet" href="/css/editormd.preview.min.css">
             <script src="/js/editormd.min.js" type="application/javascript"></script>
@@ -35,16 +36,7 @@
                     <a href="/?sort=new">最新</a>
                 </li>
                 <li role="presentation">
-                    <a href="/?sort=hot30">30天最热</a>
-                </li>
-                <li role="presentation">
-                    <a href="/?sort=hot7">7天最热</a>
-                </li>
-                <li role="presentation">
                     <a href="/?sort=hot">最热</a>
-                </li>
-                <li role="presentation">
-                    <a href="/?sort=no" class="red">消灭零回复</a>
                 </li>
             </ul>
             <div class="media" th:each="question:${pagination.data}">
@@ -70,7 +62,6 @@
                             <span aria-hidden="true">&lt;&lt;</span>
                         </a>
                     </li>
-
                     <li th:if="${pagination.showPrevious}">
                         <a th:href="@{/(page=${pagination.page-1},search='',tag='',sort='')}" aria-label="Previous">
                             <span aria-hidden="true">&lt;</span>
@@ -91,19 +82,18 @@
                     </li>
                 </ul>
             </nav>
-
         </div>
-        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+       <!-- <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
             <div>
                 <div>
-                    <!--码问官方公众号-->
+                    &lt;!&ndash;码问官方公众号&ndash;&gt;
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 side">
                         <h4>官方微信</h4>
                         <img class="img-thumbnail question-wechat" src="/images/official-account.png">
                     </div>
                 </div>
             </div>
-            <!--相关问题-->
+            &lt;!&ndash;相关问题&ndash;&gt;
             <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h4>热门标签</h4>
@@ -136,10 +126,11 @@
 
                 </div>
             </div>
-        </div>
+        </div>-->
     </div>
 </div>
 <div>
 </div>
+<div th:replace="footer::foot"></div>
 </body>
 </html>
