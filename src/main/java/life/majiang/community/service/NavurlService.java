@@ -17,7 +17,7 @@ public class NavurlService {
     private NavurlMapper navurlMapper;
 
     public Map<String, List<NavurlDTO>> getNavurlDTOMap() {
-        Map<String, List<NavurlDTO>> map = new HashMap<String, List<NavurlDTO>>();
+        Map<String, List<NavurlDTO>> map = new LinkedHashMap<String, List<NavurlDTO>>();
         NavurlExample example = new NavurlExample();
         example.or().andTopIdEqualTo(0);
         example.setOrderByClause("'sort_number' asc");

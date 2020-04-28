@@ -8,9 +8,9 @@
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                         data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">码问123</span>
+                    <span class="sr-only"></span>
                 </button>
-                <a class="navbar-brand" href="/">码问</a>
+                <a class="navbar-brand" href="/"></a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -20,7 +20,7 @@
                         <a th:text="${navurl.key}" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"  aria-haspopup="true" aria-expanded="true">行务信息12345<span class="caret"></span></a>
                         <ul class="dropdown-menu" >
                             <li th:each="urlSub:${navurl.value}">
-                                <a th:href="@{${urlSub.url}}" th:text="${urlSub.name}" target="_blank">武陟射阳村镇银行12</a>
+                                <a th:href="@{${urlSub.url}}" th:text="${urlSub.name}" target="_blank"></a>
                             </li>
 
                         </ul>
@@ -34,7 +34,7 @@
                 </form>
                 <ul class="nav navbar-nav navbar-right" th:if="${session.user!=null}">
                     <li>
-                        <a href="/publish">提问</a>
+                        <a href="/publish">发布</a>
                     </li>
                     <li><a href="/profile/replies">通知 <span class="badge">0</span></a>
                     </li>
@@ -45,7 +45,7 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="/profile/questions">我的问题</a></li>
+                            <li><a href="/profile/questions">我的新闻</a></li>
                             <li><a href="/logout">退出登录</a></li>
                         </ul>
                     </li>
