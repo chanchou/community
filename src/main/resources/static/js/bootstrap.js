@@ -3,7 +3,19 @@
  * Copyright 2011-2016 Twitter, Inc.
  * Licensed under the MIT license
  */
+$(document).ready(function(){
+  dropdownOpen();
+});
+function dropdownOpen() {
 
+  var $dropdownLi = $('li.dropdown');
+
+  $dropdownLi.mouseover(function() {
+    $(this).addClass('open');
+  }).mouseout(function() {
+    $(this).removeClass('open');
+  });
+}
 if (typeof jQuery === 'undefined') {
   throw new Error('Bootstrap\'s JavaScript requires jQuery')
 }
